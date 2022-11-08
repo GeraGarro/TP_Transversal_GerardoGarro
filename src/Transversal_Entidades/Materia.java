@@ -8,18 +8,14 @@ public class Materia {
 
     private String nombre;
 
-    private String apellido;
-
-    private LocalDate fechaNacimiento;
-
-    private String dni;
-
+    private int anio;
+    
     private boolean activo;
 
-    public Materia(int idMateria, String nombre, String apellid, LocalDate fechaNacimiento, String dni, boolean activo) {
+    public Materia(int idMateria, String nombre,int anio, boolean activo) {
     }
 
-    public Materia(String nombre, String apellid, LocalDate fechaNacimiento, String dni, boolean activo) {
+    public Materia( String nombre,int anio, boolean activo) {
     }
 
     public Materia() {

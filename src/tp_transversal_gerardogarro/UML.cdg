@@ -35,29 +35,23 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Materia" package="" visibility="public" xPosition="959.0" yPosition="62.0">
+    <Class name="Materia" package="" visibility="public" xPosition="1010.0" yPosition="53.0">
       <Fields>
         <Field name="idMateria" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
-        <Field name="apellido" type="String" visibility="private"/>
-        <Field name="fechaNacimiento" type="LocalDate" visibility="private"/>
-        <Field name="dni" type="String" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
         <Field name="activo" type="boolean" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
           <Argument type="int" name="idMateria"/>
           <Argument type="String" name="nombre"/>
-          <Argument type="String" name="apellid"/>
-          <Argument type="LocalDate" name="fechaNacimiento"/>
-          <Argument type="String" name="dni"/>
+          <Argument type="int" name="anio"/>
           <Argument type="boolean" name="activo"/>
         </Constructor>
         <Constructor visibility="public">
           <Argument type="String" name="nombre"/>
-          <Argument type="String" name="apellid"/>
-          <Argument type="LocalDate" name="fechaNacimiento"/>
-          <Argument type="String" name="dni"/>
+          <Argument type="int" name="anio"/>
           <Argument type="boolean" name="activo"/>
         </Constructor>
         <Constructor visibility="public"/>
