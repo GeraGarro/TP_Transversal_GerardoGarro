@@ -11,21 +11,56 @@ public class Inscripcion {
     private float nota;
 
     public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, float nota) {
+        this.idInscripcion=idInscripcion;
+        this.alumno=alumno;
+        this.materia=materia;
+        this.nota=nota;
     }
 
     public Inscripcion(Alumno alumno, Materia materia, float nota) {
-    }
+        this.alumno=alumno;
+        this.materia=materia;
+        this.nota=nota;}
 
     public Inscripcion() {
     }
 
-    public void getterAtributos() {
+    public int getIdInscripcion() {
+        return idInscripcion;
     }
 
-    public void setterAtributos() {
+    public void setIdInscripcion(int idInscripcion) {
+        this.idInscripcion = idInscripcion;
     }
 
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+    }
+
+    public float getNota() {
+        return nota;
+    }
+
+    public void setNota(float nota) {
+        this.nota = nota;
+    }
+
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Inscripcion{" + "idInscripcion=" + idInscripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
     }
+
+    
 }
