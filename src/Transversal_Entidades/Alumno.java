@@ -33,6 +33,10 @@ public class Alumno {
     public Alumno() {
     }
 
+    public Alumno(String gerado, String garro, LocalDate of) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getIdAlumno() {
         return idAlumno;
     }
