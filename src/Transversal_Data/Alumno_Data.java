@@ -21,11 +21,11 @@ public class Alumno_Data {
        }
    
    public void guardarAlumno(Alumno alumno){
-   String sql="INSERT INTO `alumno`(`nombre`, `apellido`, `fechaNacimiento`, `dni`, `activo`) VALUES (?, ?, ?, ?, ?);";
-            
-             
-           
+        
+      String sql="INSERT INTO `alumno`(`nombre`, `apellido`, `fechaNacimiento`, `dni`, `activo`) VALUES (?, ?, ?, ?, ?)";
+          
        try {
+
          PreparedStatement ps = conx.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, alumno.getNombre());
             ps.setString(2, alumno.getApellido());

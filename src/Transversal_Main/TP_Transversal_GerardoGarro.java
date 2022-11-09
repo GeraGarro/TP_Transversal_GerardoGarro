@@ -1,5 +1,6 @@
 package Transversal_Main;
 
+import Transversal_Data.Alumno_Data;
 import Transversal_Entidades.Alumno;
 import Transversal_Entidades.ConexionTransversal;
 import java.sql.Connection;
@@ -19,7 +20,11 @@ public class TP_Transversal_GerardoGarro {
    
     public static void main(String[] args) {
         
-      Alumno a1=new Alumno("Gerado","Garro",LocalDate.of(1993, Month.MAY, 9),"35315399",true);  
+    Alumno a1=new Alumno("Gerardo", "GARRO", LocalDate.now(), "8977", true);
+        Alumno_Data nuevoAl=new Alumno_Data();
+        
+        nuevoAl.guardarAlumno(a1);
+       
         
         
         
@@ -29,19 +34,16 @@ public class TP_Transversal_GerardoGarro {
         
         
         
-        
-        
-        
-        /*try {
+     /* try {
        
            Alumno n1=new Alumno();
-            n1.setNombre("Zoe");
-            n1.setApellido("Acevedo");
-            n1.setDni("4112335");
+            n1.setNombre("Gera");
+            n1.setApellido("Garro");
+            n1.setDni("24112335");
             n1.setFechaNacimiento(LocalDate.of(1998, Month.MARCH, 21));
             n1.setActivo(true);
         
-           String sql="INSERT INTO `alumno`(`nombre`, `apellido`, `fechaNacimiento`, `dni`, `activo`) VALUES (?,?,?,?,?);";
+          String sql="INSERT INTO `alumno`(`nombre`, `apellido`, `fechaNacimiento`, `dni`, `activo`) VALUES (?, ?, ?, ?, ?)";
             
            Connection con=ConexionTransversal.getConexion();   
            PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -76,11 +78,6 @@ public class TP_Transversal_GerardoGarro {
         JOptionPane.showMessageDialog(null, "!ERROR! SQL falla al Agregar Alumno");
         }*/
  
-       
-       
-
-    
-    
-    }
+   }
     
 }

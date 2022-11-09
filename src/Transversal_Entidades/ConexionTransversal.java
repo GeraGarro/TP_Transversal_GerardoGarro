@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 
 public class ConexionTransversal {
-  private static String url="jdbc:mysql://localhost/universidad";
+  private static String url="jdbc:mysql://localhost/universidadgerardogarro";
   private static String usuario="root";
   private static String password="";
   private static ConexionTransversal conexion=null;
