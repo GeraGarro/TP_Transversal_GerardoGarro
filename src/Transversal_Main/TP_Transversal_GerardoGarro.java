@@ -20,12 +20,12 @@ public class TP_Transversal_GerardoGarro {
    
     public static void main(String[] args) {
         
-    Alumno a1=new Alumno("Gerardo", "GARRO", LocalDate.now(), "8977", true);
+   // Alumno a1=new Alumno("Zoe", "GARRO", LocalDate.of(1949, Month.MARCH, 17), "14144735", true);
         Alumno_Data nuevoAl=new Alumno_Data();
         
-        nuevoAl.guardarAlumno(a1);
+       // nuevoAl.guardarAlumno(a1);
        
-        
+        nuevoAl.obtenerAlumno(1);
         
         
         

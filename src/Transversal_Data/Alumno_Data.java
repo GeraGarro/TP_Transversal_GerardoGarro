@@ -56,8 +56,39 @@ public class Alumno_Data {
         //JOptionPane.showMessageDialog(null, ex);
         Logger.getLogger(TP_Transversal_GerardoGarro.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-           
-            
    }
+
+public Alumno obtenerAlumno(int idAlumno){
+    
+  String sql= "SELECT * FROM `alumno` WHERE activo=1 AND idAlumno=?;";
+  
+  Alumno al=new Alumno();
+      
+       try {
+           PreparedStatement ps=conx.prepareStatement(sql);
+           ps.setInt(1, idAlumno);
+           ResultSet rs=ps.executeQuery();
+           
+           if(rs.next()){
+             al.setIdAlumno(idAlumno);
+             al.setNombre(rs.getString("nombre"));
+             al.setApellido(rs.getString("apellido"));
+             al.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+             al.setDni(rs.getString("dni"));
+             al.setActivo(rs.getBoolean("activo"));
+           
+           }
+           ps.close();
+           
+           JOptionPane.showMessageDialog(null, al);
+       } catch (SQLException ex) {
+    JOptionPane.showMessageDialog(null, ex);
+        }
+      
+  return al;
 }
+
+
+}
+
+
