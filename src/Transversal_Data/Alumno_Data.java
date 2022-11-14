@@ -11,7 +11,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import java.sql.Date;
+import java.util.ArrayList;
 
 public class Alumno_Data {
    private Connection conx;
@@ -30,7 +31,7 @@ public class Alumno_Data {
             ps.setString(1, alumno.getNombre());
             ps.setString(2, alumno.getApellido());
             ps.setString(4, alumno.getDni());
-            ps.setDate(3, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setDate(3, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5,alumno.isActivo());
            String mensaje;
             int nuevoRegistro=ps.executeUpdate();
@@ -87,8 +88,81 @@ public Alumno obtenerAlumno(int idAlumno){
       
   return al;
 }
-
+public void eliminarAlumno(int idAlumno){
+    int resultado=0;
+    String sql="DELETE FROM `alumno` WHERE activo=1 and idAlumno="+idAlumno;
+    try {
+        PreparedStatement ps=conx.prepareStatement(sql);
+        resultado=ps.executeUpdate();
+        if(resultado>0){
+            JOptionPane.showMessageDialog(null, "Registro Eliminado","Eliminar",JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        
+        ps.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "error al eliminar","actualizar",JOptionPane.ERROR_MESSAGE);
+    }
+    
 
 }
+
+public void modificarAlumno(Alumno al){
+       
+               String sql="UPDATE `alumno` SET `nombre`='[value-2]',`apellido`='[value-3]',`fechaNacimiento`='[value-4]',`Dni`='[value-5]',`activo`='[value-6]' WHERE idAlumno=?";
+
+    try {
+           PreparedStatement ps=conx.prepareStatement(sql);
+           ps.setString(1, al.getNombre());
+           ps.setString(2, al.getApellido());
+           ps.setDate(3,Date.valueOf(al.getFechaNacimiento()));
+           ps.setString(4, al.getDni());
+           ps.setBoolean(5, al.isActivo());
+       
+      int mod= ps.executeUpdate();
+        if(mod>0){
+          JOptionPane.showConfirmDialog(null, "Modificacion exitosa");
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No se pudo realizar Modoificacion");
+        }
+       } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en el modificador");
+       }
+    
+}
+
+ public ArrayList<Alumno> listadoAlumnos() {
+        ArrayList<Alumno> alumnos = new ArrayList<>();
+        Alumno al = null;
+        String sql = "SELECT * FROM `alumno`";
+        PreparedStatement ps = null;
+        try {
+            ps = conx.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                al = new Alumno();
+                al.setIdAlumno(rs.getInt("idalumno"));
+                al.setDni(rs.getString("dni"));
+                al.setNombre(rs.getString("nombre"));
+                al.setApellido(rs.getString("apellido"));
+                al.setFechaNacimiento(rs.getDate("fechaDeNacimiento").toLocalDate());
+                al.setActivo(rs.getBoolean("estado"));
+                alumnos.add(al);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Alumno_Data.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Alumno_Data.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return alumnos;
+    }
+
+}
+
 
 

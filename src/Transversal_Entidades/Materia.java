@@ -8,18 +8,18 @@ public class Materia {
 
     private String nombre;
 
-    private int anio;
+    private String anio;
     
     private boolean activo;
 
-    public Materia(int idMateria, String nombre,int anio, boolean activo) {
+    public Materia(int idMateria, String nombre,String anio, boolean activo) {
         this.idMateria=idMateria;
         this.nombre=nombre;
         this.anio=anio;
         this.activo=activo;
     }
 
-    public Materia( String nombre,int anio, boolean activo) {
+    public Materia( String nombre,String anio, boolean activo) {
         this.nombre=nombre;
         this.anio=anio;
         this.activo=activo;}
@@ -43,11 +43,11 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public int getAnio() {
+    public String getAnio() {
         return anio;
     }
 
-    public void setAnio(int anio) {
+    public void setAnio(String anio) {
         this.anio = anio;
     }
 

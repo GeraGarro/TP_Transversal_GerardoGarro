@@ -4,22 +4,22 @@ public class Inscripcion {
 
     private int idInscripcion;
 
-    private Alumno alumno;
+    private Alumno iDdAlumno;
 
-    private Materia materia;
+    private Materia idMateria;
 
     private float nota;
 
     public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, float nota) {
         this.idInscripcion=idInscripcion;
-        this.alumno=alumno;
-        this.materia=materia;
+        this.iDdAlumno=alumno;
+        this.idMateria=materia;
         this.nota=nota;
     }
 
     public Inscripcion(Alumno alumno, Materia materia, float nota) {
-        this.alumno=alumno;
-        this.materia=materia;
+        this.iDdAlumno=alumno;
+        this.idMateria=materia;
         this.nota=nota;}
 
     public Inscripcion() {
@@ -33,20 +33,20 @@ public class Inscripcion {
         this.idInscripcion = idInscripcion;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public Alumno getIdAlumno() {
+        return iDdAlumno;
     }
 
     public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+        this.iDdAlumno = alumno;
     }
 
     public Materia getMateria() {
-        return materia;
+        return idMateria;
     }
 
     public void setMateria(Materia materia) {
-        this.materia = materia;
+        this.idMateria = materia;
     }
 
     public float getNota() {
@@ -59,7 +59,7 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        return "Inscripcion{" + "idInscripcion=" + idInscripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
+        return "Inscripcion{" + "idInscripcion=" + idInscripcion + ", alumno=" + iDdAlumno + ", materia=" + idMateria + ", nota=" + nota + '}';
     }
 
     
