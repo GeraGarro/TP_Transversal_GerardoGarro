@@ -23,18 +23,17 @@ public class Inscripcion_Data {
        this.conx=ConexionTransversal.getConexion();
        }
  public void guardarInscripcion(Inscripcion ins) {
-        String sql = "INSERT INTO `inscripcion`(`idAlumno`, `idMateria`, `nota`) VALUES (?, ?, ?)";
-           
+        String sql = "INSERT INTO `inscripcion`(`idAlumno`, `idMateria`, `nota`) VALUES ( ?, ?, ?)";
         try {
            PreparedStatement ps = conx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, ins.getIdAlumno().getIdAlumno());
+            ps.setInt(1, ins.getAlumno().getIdAlumno());
             ps.setInt(2, ins.getMateria().getIdMateria());
             ps.setFloat(3, ins.getNota());
             int resultado = ps.executeUpdate();
             if (resultado > 0) {
                 JOptionPane.showMessageDialog(null, "Se registro la Inscripcion");
             } else {
-                JOptionPane.showMessageDialog(null, "Error al guardar en la bd");
+                JOptionPane.showMessageDialog(null, "Error al guardar en la base de datos");
             }
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -101,11 +100,11 @@ public class Inscripcion_Data {
     }
 
     public void actualizaInscripcion(Inscripcion ins) { //O actualizar nota?
-        String query = "UPDATE `inscripcion` SET `idAlumno`=?,`idMateria`=?,`nota`=? WHERE `idInscripcion`=?";
+        String sql = "UPDATE `inscripcion` SET `idAlumno`=?,`idMateria`=?,`nota`=? WHERE `idInscripcion`=?";
 PreparedStatement ps = null;
         try {
-            ps = conx.prepareStatement(query);
-            ps.setInt(1, ins.getIdAlumno().getIdAlumno());
+            ps = conx.prepareStatement(sql);
+            ps.setInt(1, ins.getAlumno().getIdAlumno());
             ps.setInt(2, ins.getMateria().getIdMateria());
             ps.setFloat(3, ins.getNota());
             ps.setInt(4, ins.getIdInscripcion());

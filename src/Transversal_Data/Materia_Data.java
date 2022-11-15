@@ -48,7 +48,7 @@ public void guardarMateria(Materia ma) {
     }
 
     public Materia obtenerMateria(int id) {
-        Materia ma = null;
+        Materia ma = new Materia();
         String sql = "SELECT * FROM `materia` WHERE idMateria = ?";
        
         try {
@@ -72,7 +72,7 @@ public void guardarMateria(Materia ma) {
 
     public ArrayList<Materia> listarMaterias() {
         ArrayList<Materia> materias = new ArrayList<>();
-        Materia ma = null;
+        Materia ma = new Materia();
         String sql = "SELECT * FROM `materia`";
         PreparedStatement ps = null;
         try {
@@ -117,12 +117,11 @@ public void guardarMateria(Materia ma) {
         }
     }
 
-    public void borrarMateria(Materia ma) {
-        String sql = "UPDATE `materia` SET `activo`= 0 WHERE `idMateria` = ?";
+    public void CambioEstadoMateria(int idMa) {
+        String sql = "UPDATE `materia` SET `activo`= 0 WHERE `idMateria` = "+idMa;
        
         try {
-            PreparedStatement ps = conx.prepareStatement(sql); 
-                ps.setInt(1, ma.getIdMateria());
+            PreparedStatement ps = conx.prepareStatement(sql);                
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "La Materia fue suspendida");
               ps.close();
@@ -132,6 +131,19 @@ public void guardarMateria(Materia ma) {
         }
     }
 
+    public void eliminarMateria(int idMa) {
+        String sql = "DELETE FROM materia WHERE `materia`.`idMateria` ="+idMa;
+       
+        try {
+            PreparedStatement ps = conx.prepareStatement(sql);                
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "La Materia con id "+idMa+" fue Eliminada de la Base de Datos");
+              ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "La Materia NOpudo ser Eliminada");
+            Logger.getLogger(Materia_Data.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
 
 
