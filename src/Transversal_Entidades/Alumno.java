@@ -35,9 +35,6 @@ public class Alumno {
     public Alumno() {
     }
 
-    public Alumno(String gerado, String garro, LocalDate of) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public int getIdAlumno() {
         return idAlumno;
@@ -88,9 +85,31 @@ public class Alumno {
     }
 
     @Override
-    public String toString() {
-        return "Alumno{" + "id:" + idAlumno + ", Nombre:" + nombre + ", Apellido: " + apellido + ", fechaNacimiento=" + fechaNacimiento + ", DNI: " + dni + ", Activo:" + activo + '}';
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.idAlumno;
+        return hash;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Alumno other = (Alumno) obj;
+        return this.idAlumno == other.idAlumno;
+    }
+    @Override
+    public String toString() {
+        return nombre +" "+ apellido;
+    }
+
+  
     
 }

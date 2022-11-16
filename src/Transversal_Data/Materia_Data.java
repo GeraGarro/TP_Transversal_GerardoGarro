@@ -103,11 +103,11 @@ public void guardarMateria(Materia ma) {
         
         try {
            PreparedStatement ps = conx.prepareStatement(sql);
-            ps.setInt(1, ma.getIdMateria());
-            ps.setString(2, ma.getNombre());
-            ps.setString(3,ma.getAnio());
-            ps.setBoolean(4, ma.isActivo());
             
+            ps.setString(1, ma.getNombre());
+            ps.setString(2,ma.getAnio());
+            ps.setBoolean(3, ma.isActivo());
+            ps.setInt(4, ma.getIdMateria());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "La Materia fue actualizado");
           ps.close();

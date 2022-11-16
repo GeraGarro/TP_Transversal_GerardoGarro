@@ -109,7 +109,7 @@ public void eliminarAlumno(int idAlumno){
 
 public void modificarAlumno(Alumno al){
        
-               String sql="UPDATE `alumno` SET `nombre`='[value-2]',`apellido`='[value-3]',`fechaNacimiento`='[value-4]',`Dni`='[value-5]',`activo`='[value-6]' WHERE idAlumno=?";
+               String sql="UPDATE `alumno` SET `nombre`= ?,`apellido`= ?,`fechaNacimiento`= ?,`Dni`= ?,`activo`= ? WHERE idAlumno= ?";
 
     try {
            PreparedStatement ps=conx.prepareStatement(sql);
@@ -118,10 +118,10 @@ public void modificarAlumno(Alumno al){
            ps.setDate(3,Date.valueOf(al.getFechaNacimiento()));
            ps.setString(4, al.getDni());
            ps.setBoolean(5, al.isActivo());
-       
+           ps.setInt(6, al.getIdAlumno());
       int mod= ps.executeUpdate();
         if(mod>0){
-          JOptionPane.showConfirmDialog(null, "Modificacion exitosa");
+          JOptionPane.showMessageDialog(null, "Modificacion exitosa");
             
         }else{
             JOptionPane.showMessageDialog(null, "No se pudo realizar Modoificacion");
@@ -134,7 +134,7 @@ public void modificarAlumno(Alumno al){
 
  public ArrayList<Alumno> listadoAlumnos() {
         ArrayList<Alumno> alumnos = new ArrayList<>();
-        Alumno al = null;
+        Alumno al = new Alumno();
         String sql = "SELECT * FROM `alumno`";
         PreparedStatement ps = null;
         try {
@@ -142,12 +142,12 @@ public void modificarAlumno(Alumno al){
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 al = new Alumno();
-                al.setIdAlumno(rs.getInt("idalumno"));
+                al.setIdAlumno(rs.getInt("idAlumno"));
                 al.setDni(rs.getString("dni"));
                 al.setNombre(rs.getString("nombre"));
                 al.setApellido(rs.getString("apellido"));
-                al.setFechaNacimiento(rs.getDate("fechaDeNacimiento").toLocalDate());
-                al.setActivo(rs.getBoolean("estado"));
+                al.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                al.setActivo(rs.getBoolean("activo"));
                 alumnos.add(al);
             }
         } catch (SQLException ex) {
