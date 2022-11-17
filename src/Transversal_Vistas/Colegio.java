@@ -7,11 +7,13 @@ public class Colegio extends javax.swing.JFrame {
     private CreacionMateria ventanaCM;
     private ListaAlumnos ventanaLista;
     private ListaMaterias ventanaListaMaterias;
+    private Vista_Inscripcion ventanaVI;
     public Colegio() {
+        ventanaVI=new Vista_Inscripcion();
         ventanaAlumno=new NuevoAlumno();
         ventanaCM=new CreacionMateria();
-        ventanaLista=new ListaAlumnos();
-        ventanaListaMaterias=new ListaMaterias();
+       
+        
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -170,7 +172,8 @@ public class Colegio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuMateriasActionPerformed
 
     private void MenuVerMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVerMateriasActionPerformed
-       ventanaListaMaterias.setVisible(true);
+      ventanaListaMaterias=new ListaMaterias();
+        ventanaListaMaterias.setVisible(true);
     }//GEN-LAST:event_MenuVerMateriasActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -178,13 +181,12 @@ public class Colegio extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonListasActionPerformed
-
+         ventanaLista=new ListaAlumnos();
         ventanaLista.setVisible(true);
     }//GEN-LAST:event_BotonListasActionPerformed
 
     private void BotonInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInscripcionActionPerformed
-        Vista_Inscripcion ventana=new Vista_Inscripcion();
-        ventana.setVisible(true);
+        ventanaVI.setVisible(true);
 
     }//GEN-LAST:event_BotonInscripcionActionPerformed
 

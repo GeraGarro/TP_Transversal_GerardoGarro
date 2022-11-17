@@ -61,7 +61,7 @@ public class Alumno_Data {
 
 public Alumno obtenerAlumno(int idAlumno){
     
-  String sql= "SELECT * FROM `alumno` WHERE activo=1 AND idAlumno=?;";
+  String sql= "SELECT * FROM `alumno` WHERE idAlumno=?;";
   
   Alumno al=new Alumno();
       
@@ -80,8 +80,7 @@ public Alumno obtenerAlumno(int idAlumno){
            
            }
            ps.close();
-           
-           JOptionPane.showMessageDialog(null, al);
+
        } catch (SQLException ex) {
     JOptionPane.showMessageDialog(null, ex);
         }
@@ -89,8 +88,8 @@ public Alumno obtenerAlumno(int idAlumno){
   return al;
 }
 public void eliminarAlumno(int idAlumno){
-    int resultado=0;
-    String sql="DELETE FROM `alumno` WHERE activo=1 and idAlumno="+idAlumno;
+    int resultado;
+    String sql="DELETE FROM `alumno` WHERE idAlumno= ?";
     try {
         PreparedStatement ps=conx.prepareStatement(sql);
         resultado=ps.executeUpdate();
@@ -102,7 +101,9 @@ public void eliminarAlumno(int idAlumno){
         ps.close();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "error al eliminar","actualizar",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El alumno esta asociado a Materias Inscriptas","",JOptionPane.ERROR_MESSAGE);
     }
+    
     
 
 }

@@ -60,7 +60,7 @@ public void guardarMateria(Materia ma) {
                 ma.setIdMateria(rs.getInt("idMateria"));
                 ma.setNombre(rs.getString("nombre"));
                 ma.setAnio(rs.getString("anio"));
-                ma.setActivo(rs.getBoolean("estado"));
+                ma.setActivo(rs.getBoolean("activo"));
             }
             ps.close();
         } catch (SQLException ex) {

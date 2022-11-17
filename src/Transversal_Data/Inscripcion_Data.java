@@ -22,6 +22,8 @@ public class Inscripcion_Data {
  public Inscripcion_Data(){
        this.conx=ConexionTransversal.getConexion();
        }
+ 
+ 
  public void guardarInscripcion(Inscripcion ins) {
         String sql = "INSERT INTO `inscripcion`(`idAlumno`, `idMateria`, `nota`) VALUES ( ?, ?, ?)";
         try {
@@ -72,33 +74,34 @@ public class Inscripcion_Data {
         }
         return ins;
     }
-
-    public ArrayList<Inscripcion> listarInscripcion() { //queda
-        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+ 
+public ArrayList<Inscripcion> listarInscriptos() {
+        ArrayList<Inscripcion> listaIns = new ArrayList<>();
         Inscripcion ins = null;
         String sql = "SELECT * FROM `inscripcion`";
-        
+        PreparedStatement ps = null;
         try {
-           PreparedStatement ps = conx.prepareStatement(sql);
+            ps = conx.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ins = new Inscripcion();
-                Alumno_Data aluData = new Alumno_Data();
-                Materia_Data matData = new Materia_Data();
+                ins=new Inscripcion();
+                Alumno_Data aD=new Alumno_Data();
+                Materia_Data mD=new Materia_Data();
+                        
                 ins.setIdInscripcion(rs.getInt("idInscripcion"));
-                ins.setAlumno(aluData.obtenerAlumno(rs.getInt("idAlumno")));
-                ins.setMateria(matData.obtenerMateria(rs.getInt("idMateria")));
+                ins.setAlumno(aD.obtenerAlumno(rs.getInt("idAlumno")));
+                ins.setMateria(mD.obtenerMateria(rs.getInt("idMateria")));
                 ins.setNota(rs.getFloat("nota"));
-                inscripciones.add(ins);
-            
-                ps.close();
+                listaIns.add(ins);
             }
+            ps.close();
+            
         } catch (SQLException ex) {
-            Logger.getLogger(Inscripcion_Data.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Materia_Data.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return inscripciones;
+        
+        return listaIns;
     }
-
     public void actualizaInscripcion(Inscripcion ins) { //O actualizar nota?
         String sql = "UPDATE `inscripcion` SET `idAlumno`=?,`idMateria`=?,`nota`=? WHERE `idInscripcion`=?";
 PreparedStatement ps = null;

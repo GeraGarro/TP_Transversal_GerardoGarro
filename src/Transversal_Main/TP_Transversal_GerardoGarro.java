@@ -25,12 +25,19 @@ public class TP_Transversal_GerardoGarro {
    
     public static void main(String[] args) {
         
-  Alumno a1=new Alumno(27,"German", "Perez", LocalDate.of(1988, Month.MARCH, 25), "30541100", true);
+  Alumno a1=new Alumno(12,"Rolando", "Garro", LocalDate.of(1949, Month.MARCH, 17), "14144735", true);
   // Alumno a2=new Alumno("Gerardo", "Garro", LocalDate.of(1960, Month.OCTOBER, 04), "35315399", true);
    //Alumno a3=new Alumno("Zoe", "Acevedo", LocalDate.of(1988, Month.OCTOBER, 27), "41258001", true);
-   Alumno_Data aD=new Alumno_Data();
-   aD.modificarAlumno(a1);
-   
+  // Alumno_Data aD=new Alumno_Data();
+  // aD.modificarAlumno(a1);
+   Inscripcion_Data iD=new Inscripcion_Data();
+       // for (Materia mat : iD.obtenerMateriasInscriptas(a1)) {
+       //     System.out.println(mat);
+        //}
+       for (Materia mat : iD.obtenerMateriasNoInscriptas(a1)) {
+            System.out.println(mat);
+        }
+        
        /* aD.eliminarAlumno(5);
         aD.eliminarAlumno(7);
      aD.guardarAlumno(a1);
